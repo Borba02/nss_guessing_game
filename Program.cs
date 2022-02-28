@@ -1,5 +1,7 @@
 ﻿using System;
 
+int SecretNumber = 42;
+
 Main();
 
 
@@ -17,10 +19,18 @@ void UserSays()
 
     int ParsedAnswer = int.Parse(Answer);
 
-    Console.WriteLine($"GG: Your guess is {ParsedAnswer}");
+    if (ParsedAnswer == SecretNumber)
+    {
+        Console.WriteLine("GG: You guessed right! Here's some candy");
+    }
+    else
+    {
+        Console.WriteLine("GG: You guessed wrong! Here's some candy");
+    }
 }
 
 void GuessTheNumber(string message)
 {
     Console.WriteLine($"GG: {message}");
 }
+
