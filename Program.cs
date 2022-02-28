@@ -1,15 +1,18 @@
 ﻿using System;
 
 int SecretNumber = 42;
+int Chances = 4;
 
 Main();
 
 
 void Main()
 {
-    GuessTheNumber("Hey Kid, you wanna guess my secret number?");
-    UserSays();
-
+    for (int i = 0; i < Chances; i++)
+    {
+        GuessTheNumber("Hey Kid, you wanna guess my secret number?");
+        UserSays();
+    }
 }
 
 
