@@ -1,12 +1,26 @@
 ﻿using System;
 
-namespace GuessingGame
+Main();
+
+
+void Main()
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
+    GuessTheNumber("Hey Kid, you wanna guess my secret number?");
+    UserSays();
+
+}
+
+
+void UserSays()
+{
+    string Answer = Console.ReadLine();
+
+    int ParsedAnswer = int.Parse(Answer);
+
+    Console.WriteLine($"GG: Your guess is {ParsedAnswer}");
+}
+
+void GuessTheNumber(string message)
+{
+    Console.WriteLine($"GG: {message}");
 }
