@@ -1,47 +1,58 @@
 ﻿using System;
-Random RandomNumber = new Random();
-int SecretNumber = RandomNumber.Next(1, 100);
-int Chances = 4;
-int AnswerCheck = 0;
+Random randomNumber = new Random();
+int secretNumber = randomNumber.Next(1, 3);
+int chances = 4;
+int answerCheck = 0;
 
 Main();
 
 
 void Main()
 {
-    for (int i = 0; i < Chances; i++)
+    for (int i = 0; i < chances; i++)
     {
-        GuessTheNumber("Hey Kid, you wanna guess my secret number?");
+        GuessTheNumber("Hey, you wanna guess the secret number? (1-100)");
         UserSays();
-        Console.WriteLine($"You have ({i + 1}) times");
-        if (SecretNumber == AnswerCheck)
+        Console.WriteLine($"You have guessed ({i + 1}) times");
+        if (secretNumber == answerCheck)
         {
-            i = Chances;
+            i = chances;
         }
-        Console.WriteLine($"You have ({Chances - 1 - i}) guesses remaining!");
+        else
+        {
+            Console.WriteLine($"You have ({chances - 1 - i}) guesses remaining!");
+        }
     }
 }
 
 
 void UserSays()
 {
-    int Answer = int.Parse(Console.ReadLine());
+    int UserAnswer = int.Parse(Console.ReadLine());
 
-    AnswerCheck = Answer;
+    answerCheck = UserAnswer;
 
-    if (Answer == SecretNumber)
+    if (UserAnswer == secretNumber)
     {
-        Console.WriteLine("GG: You guessed right! Here's some candy");
+        Console.WriteLine("GG: You guessed right!");
     }
     else
     {
-        Console.WriteLine("GG: You guessed wrong! Here's some candy");
+        if (secretNumber > UserAnswer)
+            Console.WriteLine("GG: You guessed too low!");
+        else
+        {
+            Console.WriteLine("GG: You guessed too high!");
+        }
+
     }
 
 }
 
 void GuessTheNumber(string message)
 {
+    Console.WriteLine("'''''''''''''''''''''''''''''");
     Console.WriteLine($"GG: {message}");
 }
+
 
