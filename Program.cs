@@ -2,6 +2,7 @@
 
 int SecretNumber = 42;
 int Chances = 4;
+int AnswerCheck = 0;
 
 Main();
 
@@ -12,17 +13,22 @@ void Main()
     {
         GuessTheNumber("Hey Kid, you wanna guess my secret number?");
         UserSays();
+        Console.WriteLine($"You've guessed ({i + 1}) times");
+        if (SecretNumber == AnswerCheck)
+        {
+            i = Chances;
+        }
     }
 }
 
 
 void UserSays()
 {
-    string Answer = Console.ReadLine();
+    int Answer = int.Parse(Console.ReadLine());
 
-    int ParsedAnswer = int.Parse(Answer);
+    AnswerCheck = Answer;
 
-    if (ParsedAnswer == SecretNumber)
+    if (Answer == SecretNumber)
     {
         Console.WriteLine("GG: You guessed right! Here's some candy");
     }
@@ -30,6 +36,7 @@ void UserSays()
     {
         Console.WriteLine("GG: You guessed wrong! Here's some candy");
     }
+
 }
 
 void GuessTheNumber(string message)
